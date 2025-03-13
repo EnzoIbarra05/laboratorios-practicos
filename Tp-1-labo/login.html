@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <!--Formulario para usuario y contraseña-->
+
+    <form onsubmit="event.preventDefault(); loginPersonal();">
+        
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" placeholder="Ej: JohnDoe"><br>
+        
+        <label for="contrasenia">Contraseña</label>
+        <input type="password" id="contrasenia" placeholder="Ingrese contraseña"><br>
+        
+        <button type="submit">Ingresar</button>
+    </form>
+
+   <!--Mensaje que se le va a dar segun la clave-->
+   
+    <p id="mensaje"></p> 
+
+    <script src="codigo.js"></script>
+</body>
+</html>

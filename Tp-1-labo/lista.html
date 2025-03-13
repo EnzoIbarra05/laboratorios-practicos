@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla con Datos de API</title>
+</head>
+<body>
+    
+    <h2>Lista de Usuarios</h2>
+
+    <!--Formulario para busqueda de usuarios-->
+
+    
+       <label for="busqueda">Busqueda de usuario</label>
+       <input type="text" name="busqueda" id="buscando">
+       <button onclick="buscar()">Buscar</button><br>
+    
+
+    <!--tabla de usuarios-->
+
+    <table border="1">
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Bloqueado</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Bloquear</th>
+                <th>Desbloquear</th>
+            </tr>
+        </thead>
+
+        <!--Lugar para cargar los usuarios de la URL-->
+
+        <tbody id="tabla-body">
+            
+        </tbody>
+
+    </table>
+
+    <script src="listas.js"></script>
+</body>
+</html>
