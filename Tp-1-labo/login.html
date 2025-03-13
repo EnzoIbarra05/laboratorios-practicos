@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Login</title>
 </head>
 <body>
     <!--Formulario para usuario y contraseña-->
-
+<div class="formulario">
     <form onsubmit="event.preventDefault(); loginPersonal();">
-        
-        <label for="usuario">Usuario</label>
+
+        <fieldset>
+            <legend class="legend">Login</legend>
+        <div class="usuario">
+        <label for="usuario" >Usuario</label>
         <input type="text" id="usuario" placeholder="Ej: JohnDoe"><br>
-        
+        </div>
+
+        <div class="contrasenia">
         <label for="contrasenia">Contraseña</label>
         <input type="password" id="contrasenia" placeholder="Ingrese contraseña"><br>
-        
+        </div>
+
         <button type="submit">Ingresar</button>
+    </fieldset>
     </form>
+</div>
 
    <!--Mensaje que se le va a dar segun la clave-->
-   
-    <p id="mensaje"></p> 
+   <div class="mensaje1">
+      <p id="mensaje"></p> 
+   </div>
 
     <script src="codigo.js"></script>
 </body>

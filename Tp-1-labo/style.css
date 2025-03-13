@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(47, 45, 45);
+}
+
+input {
+    background-color:#edd4d4 ;
+    border-color: #edd4d4 ;
+    border-radius: 4px;
+}
+fieldset{
+    border-radius: 10px;
+    border-color: rgb(179, 123, 123);;
+}
+.legend{
+    color: rgb(179, 123, 123);
+    font-size: 80px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.formulario{
+    
+    align-items: center;
+    text-align: center;
+    margin:300px 600px 50px 600px;
+    box-shadow: 20px 60px 90px 0px #201f1f; 
+    
+}
+.usuario{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.usuario label{
+    padding-right: 40px;
+    border-left: solid 1px white;
+    border-bottom: solid 1px white;
+    padding-left: 8px;
+    padding-bottom: 5px;
+    color: white;
+}
+.contrasenia{
+    padding-bottom: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.contrasenia label{
+    border-left: solid 1px white;
+    border-bottom: solid 1px white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    color: white;
+    padding-right: 17px;
+}
+button{
+    background-color: rgb(85, 64, 64);
+    width: 300px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+button:hover {
+    background-color: rgb(179, 123, 123); /* Color al pasar el mouse */
+}
+.mensaje1{
+    width: 100%;
+    text-align: center;
+}
