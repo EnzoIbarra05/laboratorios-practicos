@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla con Datos de API</title>
+    <link rel="stylesheet" href="listas.css">
+    <title>Tabla Usuarios</title>
 </head>
 <body>
     
@@ -11,14 +12,14 @@
 
     <!--Formulario para busqueda de usuarios-->
 
-    
+       <div class="buscador">
        <label for="busqueda">Busqueda de usuario</label>
-       <input type="text" name="busqueda" id="buscando">
+       <input type="text" name="busqueda" id="buscando" placeholder="ingrese usuario...">
        <button onclick="buscar()">Buscar</button><br>
-    
+       </div>
 
     <!--tabla de usuarios-->
-
+<div class="tabla">
     <table border="1">
         
         <thead>
@@ -40,7 +41,7 @@
         </tbody>
 
     </table>
-
+</div>
     <script src="listas.js"></script>
 </body>
 </html>

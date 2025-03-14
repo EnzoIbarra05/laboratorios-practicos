@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(47, 45, 45);
+}
+h2{
+    width: 100%;
+    text-align: center;
+    color: antiquewhite;
+    font-size: 50px;
+}
+.buscador{
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.buscador label{
+    color: antiquewhite;
+    font-size: 20px;
+    border-left: solid 1px antiquewhite;
+    border-bottom: solid 1px antiquewhite;
+    padding-left: 5px;
+    padding-bottom: 1px;
+}
+.buscador input{
+    border-radius: 5px;
+    background-color: antiquewhite;
+}
+button{
+    border-radius: 5px;
+    background-color: antiquewhite;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-color: antiquewhite;
+}
+button:hover {
+    background-color: rgb(179, 123, 123); /* Color al pasar el mouse */
+}
+table{
+    width: 100%;
+    align-items: center;
+    
+}
+.tabla th{
+    background-color:antiquewhite;
+}
