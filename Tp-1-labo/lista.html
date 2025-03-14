@@ -1,46 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla con Datos de API</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Lista Usuarios</title>
+    <script src="listas.js"></script>
 </head>
 <body>
+    <h1>Lista de Usuarios</h1>
+    <div class="busqueda">
+        <input type="text" id="buscarUsuario" placeholder="Buscar usuario">
+        <button id="botonBusqueda">Buscar</button>
+    </div>
+
+    <div class="datos">
+        <table id="tablaUsuarios">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Usuario</th>
+                    <th>Bloqueado</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Bloquear</th>
+                    <th>Desbloquear</th>
+                </tr>
+            </thead>
+            <tbody id="filasUsuarios">
+                <!-- Aquí se insertarán las filas de la tabla -->
+            </tbody>
     
-    <h2>Lista de Usuarios</h2>
-
-    <!--Formulario para busqueda de usuarios-->
-
-    
-       <label for="busqueda">Busqueda de usuario</label>
-       <input type="text" name="busqueda" id="buscando">
-       <button onclick="buscar()">Buscar</button><br>
-    
-
-    <!--tabla de usuarios-->
-
-    <table border="1">
-        
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Bloqueado</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Bloquear</th>
-                <th>Desbloquear</th>
-            </tr>
-        </thead>
-
-        <!--Lugar para cargar los usuarios de la URL-->
-
-        <tbody id="tabla-body">
-            
-        </tbody>
-
-    </table>
-
-    <script src="listas.js"></script>
+        </table>
+    </div>
 </body>
 </html>

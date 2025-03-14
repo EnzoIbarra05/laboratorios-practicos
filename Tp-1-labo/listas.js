@@ -1,144 +1,70 @@
-// URL de la API de usuarios
+//Cargar eventos del DOM
+document.addEventListener('DOMContentLoaded', function() {
+    cargarDatos();
+    document.getElementById('botonBusqueda').addEventListener('click', buscar);
 
-const urlCarga = "http://181.111.166.250:8081/tp/lista.php?action=BUSCAR";
+})
 
 
-//Funcion para cargar todos los usuarios desde un principio
+//Funcion para obtener la lista de ususarios
+async function cargarDatos(busqueda = '') {
+    const url = `http://181.111.166.250:8081/tp/lista.php?action=BUSCAR${busqueda ? `&usuario=${encodeURIComponent(busqueda)}` : ''}`;
+    
+    try {
+        const respuesta = await fetch(url);
+        const texto = await respuesta.text();
+        const datos = JSON.parse(texto);
+        mostrarUsuarios(datos);
 
-function cargarDatos() {
-
-    fetch(urlCarga) 
-        .then(response => response.json()) 
-        .then(data => {
-            //llamo a la tabla a completar
-
-            let tablaBody = document.getElementById("tabla-body");
-
-            //Limpio la tabla por si ya tenia datos
-
-            tablaBody.innerHTML = ""; 
-
-            // Recorro el JSON e inserto la info
-
-            Object.values(data).forEach(persona => {
-                let fila = document.createElement("tr");
-                fila.innerHTML = `
-                <td>${persona.id}</td>
-                <td>${persona.usuario}</td>
-                <td>${persona.bloqueado}</td>
-                <td>${persona.nombre}</td>
-                <td>${persona.apellido}</td>
-                <td><button onclick="bloquear('${persona.id}')" style="background-color: red;color:white">Bloquear</button></td>
-                <td><button onclick="desbloquear('${persona.id}')" style="background-color: green;color:white">Desbloquear</button></td>
-            `;
-
-            // Verifico el color de la fila si esta bloqueado o no
-
-                if(persona.bloqueado==="N"){
-                fila.style.backgroundColor="#cef8c6";
-                }
-                else{
-                    fila.style.backgroundColor="#fd9f8b";
-                }
-            
-            //inserto fila
-
-                tablaBody.appendChild(fila);
-            });
-        })
-        .catch(error => console.error("Error al obtener datos:", error)); // Capturar errores
+    } catch (error) {
+        console.error('Error al obtener usuarios:', error);
+        document.getElementById('filasUsuarios').innerHTML = '<tr><td colspan="7">Error al cargar los datos</td></tr>';
+    }
 }
 
-window.onload = cargarDatos;
+//Funcion para mostrar la lista de ususarios
+function mostrarUsuarios(usuarios) {
+    const filasUsuarios = document.getElementById('filasUsuarios');
+    filasUsuarios.innerHTML = '';
 
+    if(usuarios.length === 0) {
+        filasUsuarios.innerHTML = '<tr><td colspan="7">No se encontraron usuarios</td></tr>';
+        return;
+    }
+    
+    usuarios.forEach(usuario => {
+        const fila = document.createElement('tr');
+        fila.style.backgroundColor = usuario.bloqueado === 'Y' ? '#fd9f8b' : '#cef8c6';
+        
+        fila.innerHTML = `
+            <td>${usuario.id}</td>
+            <td>${usuario.usuario}</td>
+            <td>${usuario.bloqueado}</td>
+            <td>${usuario.nombre}</td>
+            <td>${usuario.apellido}</td>
+            <td><button class="bloquear" onclick="cambiarEstado(${usuario.id}, 'Y')">Bloquear</button></td>
+            <td><button class="desbloquear" onclick="cambiarEstado(${usuario.id}, 'N')">Desbloquear</button></td>
+        `;
 
+        filasUsuarios.appendChild(fila);
+    })
+}
+
+//Funcion para buscar usuarios
 function buscar() {
-   
-    const busqueda = document.getElementById("buscando").value;
-
-
-    const urlBusqueda = `http://181.111.166.250:8081/tp/lista.php?action=BUSCAR&usuario=${busqueda}`;
-
-    fetch(urlBusqueda)
-        .then(response => response.json())
-        .then(data => {
-            let tablaBody = document.getElementById("tabla-body");
-            tablaBody.innerHTML = "";
-
-            // Verifico si hay 'data' disponible
-
-            if (Object.values(data).length === 0) {
-                alert("No se encontraron resultados.");
-                cargarDatos();
-
-            } else {
-            
-            //si la hay devuelvo lo encontrado
-
-                Object.values(data).forEach(persona => {
-                    let fila = document.createElement("tr");
-                    fila.innerHTML = `
-                    <td>${persona.id}</td>
-                    <td id="${persona.usuario}">${persona.usuario}</td>
-                    <td>${persona.bloqueado}</td>
-                    <td>${persona.nombre}</td>
-                    <td>${persona.apellido}</td>
-                    <td><button onclick="bloquear('${persona.id}')" style="background-color: red;color:white">Bloquear</button></td>
-                    <td><button onclick="desbloquear('${persona.id}')" style="background-color: green;color:white">Desbloquear</button></td>
-                `;
-
-                //aqui tambien verifico color segun el estado de bloqueo
-
-                    if(persona.bloqueado==="N"){
-                
-                        fila.style.backgroundColor="#cef8c6";
-                }
-                    else{
-                        fila.style.backgroundColor="#fd9f8b";
-                    }
-                  
-                    tablaBody.appendChild(fila);
-                });
-            }
-        })
-        .catch(error => console.error("Error al hacer la solicitud:", error));
+    const busqueda = document.getElementById("buscarUsuario").value;
+    cargarDatos(busqueda);
 }
 
+//Funcion para cambiar el estado de un usuario
+async function cambiarEstado(id, estado) {
+    const url = `http://181.111.166.250:8081/tp/lista.php?action=BLOQUEAR&idUser=${id}&estado=${estado}`;
+    try {
+        await fetch(url);
+        cargarDatos();
 
-
-function bloquear(Idusuario) { 
-    //Tomo el id de la persona a bloquear
-
-    console.log("ID del usuario a bloquear:", Idusuario);
-
-    //creo URL de bloqueo segun Id
-    let urlBloqueo = `http://181.111.166.250:8081/tp/lista.php?action=BLOQUEAR&idUser=${Idusuario}&estado=Y`;
-
-    //realizo la peticion
-    
-    fetch(urlBloqueo)
-        .then(response => {
-            console.log("Respuesta de la API:", response);
-            return response.json();
-        })
-        .then(data => {
-            console.log("Respuesta JSON:", data);
-        })
-        .catch(error => console.error("Error al bloquear:", error));
-}
-
-
-function desbloquear(Idusuario) { 
-    console.log("ID del usuario a desbloquear:", Idusuario);
-    let urlDesbloqueo = `http://181.111.166.250:8081/tp/lista.php?action=BLOQUEAR&idUser=${Idusuario}&estado=N`;
-    fetch(urlDesbloqueo)
-        .then(response => {
-            console.log("Respuesta de la API:", response);
-            return response.json();
-    
-        })
-        .then(data => {
-            console.log("Respuesta JSON:", data);
-        })
-        .catch(error => console.error("Error al bloquear:", error));
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error al procesar la solicitud. Intente nuevamente.');
+    }
 }
