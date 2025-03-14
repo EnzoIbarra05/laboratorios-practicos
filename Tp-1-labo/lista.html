@@ -7,41 +7,35 @@
     <title>Tabla Usuarios</title>
 </head>
 <body>
+    <div>
+        <h2>Lista de Usuarios</h2>
     
-    <h2>Lista de Usuarios</h2>
-
-    <!--Formulario para busqueda de usuarios-->
-
-       <div class="buscador">
-       <label for="busqueda">Busqueda de usuario</label>
-       <input type="text" name="busqueda" id="buscando" placeholder="ingrese usuario...">
-       <button onclick="buscar()">Buscar</button><br>
-       </div>
-
-    <!--tabla de usuarios-->
-<div class="tabla">
-    <table border="1">
-        
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Bloqueado</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Bloquear</th>
-                <th>Desbloquear</th>
-            </tr>
-        </thead>
-
-        <!--Lugar para cargar los usuarios de la URL-->
-
-        <tbody id="tabla-body">
-            
-        </tbody>
-
-    </table>
-</div>
+        <!--Formulario para busqueda de usuarios-->
+        <form class="buscador" id="formBuscar">
+           <label for="busqueda">Busqueda de usuario</label>
+           <input type="text" name="busqueda" id="buscando" placeholder="ingrese usuario...">
+           <button type="submit">Buscar</button><br>
+        </form>
+    
+        <!--tabla de usuarios-->
+        <div class="tabla">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Bloqueado</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Bloquear</th>
+                        <th>Desbloquear</th>
+                    </tr>
+                </thead>
+                <!--Lugar para cargar los usuarios de la URL-->
+                <tbody id="tabla-body"></tbody>
+            </table>
+        </div>
+    </div>
     <script src="listas.js"></script>
 </body>
 </html>

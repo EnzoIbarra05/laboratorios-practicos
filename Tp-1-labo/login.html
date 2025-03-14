@@ -7,32 +7,30 @@
     <title>Login</title>
 </head>
 <body>
-    <!--Formulario para usuario y contraseña-->
-<div class="formulario">
-    <form onsubmit="event.preventDefault(); loginPersonal();">
-
-        <fieldset>
-            <legend class="legend">Login</legend>
-        <div class="usuario">
-        <label for="usuario" >Usuario</label>
-        <input type="text" id="usuario" placeholder="Ej: JohnDoe"><br>
+    <div>
+        <!--Formulario para usuario y contraseña-->
+        <div class="formulario">
+            <!-- Saque onsubmit="event.preventDefault(); loginPersonal();" y lo aplique en codigo.js -->
+            <form id="form">
+                <fieldset>
+                    <legend class="legend">Login</legend>
+                    <div class="usuario">
+                        <label for="usuario" >Usuario</label>
+                        <input type="text" id="usuario" placeholder="Ej: JohnDoe"><br>
+                    </div>
+                    <div class="contrasenia">
+                        <label for="contrasenia">Contraseña</label>
+                        <input type="password" id="contrasenia" placeholder="Ingrese contraseña"><br>
+                    </div>
+                    <button type="submit">Ingresar</button>
+                </fieldset>
+            </form>
         </div>
-
-        <div class="contrasenia">
-        <label for="contrasenia">Contraseña</label>
-        <input type="password" id="contrasenia" placeholder="Ingrese contraseña"><br>
+        <!--Mensaje que se le va a dar segun la clave-->
+        <div class="mensaje1">
+            <p id="mensaje"></p> 
         </div>
-
-        <button type="submit">Ingresar</button>
-    </fieldset>
-    </form>
-</div>
-
-   <!--Mensaje que se le va a dar segun la clave-->
-   <div class="mensaje1">
-      <p id="mensaje"></p> 
-   </div>
-
+    </div>
     <script src="codigo.js"></script>
 </body>
 </html>
