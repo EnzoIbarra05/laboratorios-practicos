@@ -1,74 +1,161 @@
-body{
+/* Ajuste general del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dbdddf;
     margin: 0;
     padding: 0;
-    background-color: rgb(47, 45, 45);
-}
-
-input {
-    background-color:#edd4d4 ;
-    border-color: #edd4d4 ;
-    border-radius: 4px;
-}
-fieldset{
-    border-radius: 10px;
-    border-color: rgb(179, 123, 123);;
-}
-.legend{
-    color: rgb(179, 123, 123);
-    font-size: 80px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-}
-.formulario{
-    
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    margin:30vh 20vw 50px 20vw;
-    box-shadow: 20px 60px 90px 0px #201f1f; 
-    
+    min-height: 100vh;
+    margin-top: 30px;
 }
-.usuario{
-    padding-top: 30px;
-    padding-bottom: 20px;
-    font-family: Arial, Helvetica, sans-serif;
 
-}
-.usuario label{
-    padding-right: 40px;
-    border-left: solid 1px white;
-    border-bottom: solid 1px white;
-    padding-left: 8px;
-    padding-bottom: 5px;
-    color: white;
-}
-.contrasenia{
-    padding-bottom: 40px;
-    font-family: Arial, Helvetica, sans-serif;
-    
-}
-.contrasenia label{
-    border-left: solid 1px white;
-    border-bottom: solid 1px white;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    color: white;
-    padding-right: 17px;
-}
-button{
-    background-color: rgb(85, 64, 64);
+/* Contenedor del formulario */
+.formulario {
+    display:block;
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
-    margin-bottom: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+}
+
+/* Contenedor de la tabla */
+.datos {
+    width: 90%;
+    max-width: 1200px;
+    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es grande */
+    margin-top: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de búsqueda */
+.busqueda {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 15px;
+}
+
+/* Inputs y botones */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4c8baf;
+    color: white;
     border: none;
+    padding: 10px;
+    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: white;
-}
-button:hover {
-    background-color: rgb(179, 123, 123); /* Color al pasar el mouse */
-}
-.mensaje1{
-    width: 100%;
+    width: 50%;
+    display: block;
+    margin: 10px auto;
     text-align: center;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #3c5883;
+}
+
+
+/* Botones de acción */
+button{
+    background-color: #4c8baf;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #3c5883;
+}
+
+/* Botón Bloquear - Rojo */
+.bloquear {
+    background-color: #e74c3c; /* Rojo */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bloquear:hover {
+    background-color: #c0392b; /* Rojo oscuro al pasar el mouse */
+}
+
+/* Botón Desbloquear - Verde */
+.desbloquear {
+    background-color: #2ecc71; /* Verde */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.desbloquear:hover {
+    background-color: #27ae60; /* Verde oscuro al pasar el mouse */
+}
+
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Asegura que no se encoja demasiado */
+}
+
+/* Encabezados */
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Filas alternas */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Colores de estado */
+tr.bloqueado {
+    background-color: #fd9f8b !important;
+}
+
+tr.desbloqueado {
+    background-color: #cef8c6 !important;
 }
